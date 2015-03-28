@@ -4,7 +4,24 @@
 # 
 #
 #
-BOLD=`tput bold`
+
+#########################
+#Hosts           
+#########################
+function hosts {
+echo
+echo -e $COLOR_NONE "Enter first 3 octets of IP"
+echo "Ex: root@kali:~#192.168.1"
+echo 
+read octet
+for i in `seq 1 255`; do
+	ping -c 1 $octet.$i | grep "bytes from" | cut -d " " -f4 | cut -d ":" -f1 &
+done
+}
+
+#########################
+#Main Menu
+#########################
 function mainmenu {
 echo -e "
 \033[0;32m
@@ -19,7 +36,7 @@ echo -e "
      x-/                   \-x
 \033[31m######################################\033[m
 \033[m"
-select menusel in "Recon" "Stress" "RAT" "Scan" "Exit";do
+select menusel in "Recon" "Stress" "RAT" "Scan" "Hosts" "Exit";do
 case $menusel in
 	"Recon")
 	clear ;;
@@ -31,6 +48,10 @@ case $menusel in
 	clear ;;
 
 	"Scan")
+	clear ;;
+	
+	"Hosts")
+	hosts
 	clear ;;
 
 	"Exit")

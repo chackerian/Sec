@@ -1,8 +1,6 @@
 #!/bin/bash
 # Addition 1: Count amount of hosts discovered and display #
 # Addition 2: Add colors
-NUM=0
-TERM=xterm-color
 clear
 echo
 echo -e $COLOR_NONE "Enter first 3 octets of IP"
