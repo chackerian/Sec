@@ -19,7 +19,7 @@ echo -e "
      x-/                   \-x
 \033[31m######################################\033[m
 \033[m"
-select menusel in "Recon" "DDoS" "RAT" "Scan";do
+select menusel in "Recon" "Stress" "RAT" "Scan" "Exit";do
 case $menusel in
 	"Recon")
 	clear ;;
