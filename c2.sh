@@ -18,6 +18,14 @@ for i in `seq 1 255`; do
 	ping -c 1 $octet.$i | grep "bytes from" | cut -d " " -f4 | cut -d ":" -f1 &
 done
 }
+#########################
+Stress
+#########################
+
+function stress {
+xterm perl slowloris.pl
+}
+
 
 #########################
 #Main Menu
@@ -42,6 +50,7 @@ case $menusel in
 	clear ;;
 
 	"Stress")
+	stress
 	clear ;;
 
 	"RAT")
