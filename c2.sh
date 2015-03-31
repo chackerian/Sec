@@ -1,9 +1,56 @@
 # chackerian
 # c2 - Command and Control - Amalgamation of various sec tools
-# Tools that will be included
+
+#########################
+#PTES           
+#########################
+
+# Pre Engagement
+# Threat Modeling
+# Vulnerability Analysis
+# Exploitation
+# Post Exploitation
+# Reporting
+
+#########################
+#Tools          
+#########################
+
+# nmap
+# hydra
+# airmon-ng
+# metasploit
+# SET
+# lynis
+# BeEF
+# WPScan
+# Dark Comet
+# crypting
+# whois
+# dig
+# nslookup
+# burpsuite
+# owasp-zap
+# wapiti
+# sqlninja
+# scapy
+# aircrack
+# nikto
+# sqlninja
+# nc
+# SHODAN
+# Google Dorks
+# OpenVAS
+# Nessus
+# W3af
+# netsparker
+# sqlmap
+# Acunetics
+# ettercap
+# nikto
+# canvas 
+# netsparker
 # 
-#
-#
 
 #########################
 #Hosts           
@@ -44,23 +91,35 @@ echo -e "
      x-/                   \-x
 \033[31m######################################\033[m
 \033[m"
-select menusel in "Recon" "Stress" "RAT" "Scan" "Hosts" "Exit";do
+select menusel in "DNS" "whois" "nc" "stress" "RAT" "scan" "hosts" "S.E" "phone" "Exit";do
 case $menusel in
-	"Recon")
+	"DNS")
 	clear ;;
 
-	"Stress")
+	"whois")
+	clear ;;
+
+	"nc")
+	clear ;;
+
+	"stress")
 	stress
 	clear ;;
 
 	"RAT")
 	clear ;;
 
-	"Scan")
+	"scan")
 	clear ;;
 	
-	"Hosts")
+	"hosts")
 	hosts
+	clear ;;
+
+	"S.E.")
+	clear ;;
+
+	"phone")
 	clear ;;
 
 	"Exit")
