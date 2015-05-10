@@ -72,10 +72,47 @@ Stress
 function stress {
 xterm perl slowloris.pl
 }
-
+#########################
+# Target Menu
+#########################
+function targetmenu {
+echo -e "
+\033[0;32m
+      A                     A
+    .7Y      _________      7Y.
+    7Y      / ___|___ \      7Y
+   7Y      | |     __) |      7Y
+   7Y      | |___ / __/       7Y
+   \V/.     \____|_____|    .\V/
+    v.-v.                 .v-.v
+      x/_.===============._\x
+     x-/                   \-x
+\033[31m######################################\033[m
+\033[31m######################################\033[m
+\033[31m######################################\033[m
+\033[m"
+	select tarsel in "Select Target" "Create Target" "Remove Target" "Exit"; do
+		case $tarselin in
+			"Select Target")
+			clear ;;
+			
+			"Create Target")
+			clear ;;
+			
+			"Remove Target")
+			clear ;;
+			
+			"Exit")
+			clear ;; && exit 0 ;;
+		esac
+	break
+done
+			
+}
+##################################################
 
 #########################
-#Main Menu
+# Main Menu
 #########################
 function mainmenu {
 echo -e "
@@ -91,42 +128,43 @@ echo -e "
      x-/                   \-x
 \033[31m######################################\033[m
 \033[m"
-select menusel in "DNS" "whois" "nc" "stress" "RAT" "scan" "hosts" "S.E" "phone" "Exit";do
-case $menusel in
-	"DNS")
-	clear ;;
+	select menusel in "DNS" "whois" "nc" "stress" "RAT" "scan" "hosts" "S.E" "phone" "Exit";do
+		case $menusel in
+			"DNS")
+			clear ;;
 
-	"whois")
-	clear ;;
+			"whois")
+			clear ;;
 
-	"nc")
-	clear ;;
+			"nc")
+			clear ;;
 
-	"stress")
-	stress
-	clear ;;
+			"stress")
+			stress
+			clear ;;
 
-	"RAT")
-	clear ;;
+			"RAT")
+			clear ;;
 
-	"scan")
-	clear ;;
+			"scan")
+			clear ;;
 	
-	"hosts")
-	hosts
-	clear ;;
+			"hosts")
+			hosts
+			clear ;;
 
-	"S.E.")
-	clear ;;
+			"S.E.")
+			clear ;;
 
-	"phone")
-	clear ;;
+			"phone")
+			clear ;;
 
-	"Exit")
-	clear && exit 0 ;;
-esac
-break
+			"Exit")
+			clear && exit 0 ;;
+		esac
+	break
 done
 }
 mainmenu
-while true; do mainmenu; done
+while true; do targetmenu; done
+##################################################
