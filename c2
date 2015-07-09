@@ -2,7 +2,7 @@
 # c2 - Command and Control - Amalgamation of various sec tools
 
 #########################
-#PTES           
+# PTES           
 #########################
 
 # Pre Engagement
@@ -13,7 +13,7 @@
 # Reporting
 
 #########################
-#Tools          
+# Tools          
 #########################
 
 # nmap
@@ -53,7 +53,13 @@
 # 
 
 #########################
-#Hosts           
+# Env Variables
+#########################
+USER=`echo $USER`;
+TARGETS=
+DATE=`date`;
+#########################
+# Hosts           
 #########################
 function hosts {
 echo
@@ -65,8 +71,39 @@ for i in `seq 1 255`; do
 	ping -c 1 $octet.$i | grep "bytes from" | cut -d " " -f4 | cut -d ":" -f1 &
 done
 }
+
 #########################
-Stress
+# Select Target
+#########################
+function select_target {
+	echo "Enter Target Name"
+	read target
+	if [ -d Targets/$target ]; then
+		cd Targets/$target
+		echo -e "\033[0;32mTarget $target successfully selected"
+	else
+		echo "Target not Found :C"
+	fi
+	sleep 3
+}
+
+#########################
+# Create Target
+#########################
+function create_target {
+	echo "Enter name of Target";
+	read target;
+	cd Targets/;
+	mkdir $target;
+	cd Targets/$target;
+}
+
+#########################
+# List Target
+#########################
+
+#########################
+# Stress
 #########################
 
 function stress {
@@ -88,22 +125,29 @@ echo -e "
       x/_.===============._\x
      x-/                   \-x
 \033[31m######################################\033[m
-\033[31m######################################\033[m
+\033[31m $USER, $DATE\033[m
 \033[31m######################################\033[m
 \033[m"
 	select tarsel in "Select Target" "Create Target" "Remove Target" "Exit"; do
-		case $tarselin in
+		case $tarsel in
 			"Select Target")
+			select_target
 			clear ;;
 			
 			"Create Target")
+			create_target
 			clear ;;
 			
-			"Remove Target")
+			"List Targets")
+			list_target
+			clear ;;
+			
+			"Remove Targets")
+			remove_target
 			clear ;;
 			
 			"Exit")
-			clear ;; && exit 0 ;;
+			clear && exit 0 ;;
 		esac
 	break
 done
@@ -165,6 +209,6 @@ echo -e "
 	break
 done
 }
-mainmenu
+targetmenu
 while true; do targetmenu; done
 ##################################################
